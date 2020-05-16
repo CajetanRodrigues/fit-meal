@@ -43,19 +43,19 @@ _Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-st
 
 | BMI  | Activity & Body Type |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/bmi.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/activity.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/bmi.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/activity-body.PNG" width="250"> 
 
 ### Meals & Basket
 
 | Meals List  | Basket of selected meals |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/meals.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/basket.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/meals.png" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/basket.PNG" width="250"> 
 
 ### Framed Routine using Algorithm
 
 | Framed Routine  | Save Routine Modal |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/routine.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/countries.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/routine.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/routines.PNG" width="250"> 
 
 ## Deploying
 
