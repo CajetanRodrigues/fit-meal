@@ -1,0 +1,60 @@
+.message {
+    margin: auto;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: darkgrey
+}
+#bottom-sticky-button {
+    position: sticky;
+    bottom: 0px;
+    margin: 0px 0px 0px 0px;
+    height: 50px;
+}
+ion-card {
+    border-radius: 0px;
+    margin: 0px;
+}
+ion-searchbar {
+    margin-bottom: 20px;
+}
+.button-medium {
+    width: 55px;
+    height: 45px;
+}
+.icon-size {
+    width: 50px;
+    height: 50px;
+}
+.footer{
+    position: sticky;
+    bottom: 0px;
+  }
+  #container {
+    width:100%;
+    text-align:center;
+}
+
+#left {
+    float:left;
+    // width:100px;
+    margin-left: 5px;
+}
+
+#center {
+    display: inline-block;
+    margin:0 auto;
+    // width:100px;
+}
+
+#right {
+    float:right;
+    // width:100px;
+    margin-right: 5px;
+}
+.indicator {
+    color: green
+}
+.indicator {
+    font-weight: bold;
+}

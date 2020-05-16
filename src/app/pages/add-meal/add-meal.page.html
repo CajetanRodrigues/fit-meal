@@ -1,0 +1,50 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Add Meal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Add your meal</ion-card-title>
+        <ion-card-subtitle> Please note that the quantity is assumed to be 100g for each meal.</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <img class="image" src="{{url}}">
+   
+  
+  
+<div *ngIf="uploadButtonFlag || url.length===0">
+<ion-button id="upload-image-button" (click)="selectImage()">
+  <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+  Upload Image
+</ion-button>
+</div>
+<ion-item>
+  <ion-label position="floating" color="primary">Name</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+ <ion-item>
+  <ion-label position="floating" color="primary">Proteins (grams)</ion-label>
+  <ion-input type="number"></ion-input>
+</ion-item>
+ <ion-item>
+  <ion-label position="floating" color="primary">Carbs (grams)</ion-label>
+  <ion-input type="number"></ion-input>
+</ion-item>
+ <ion-item>
+  <ion-label position="floating" color="primary">Calories (kcal)</ion-label>
+  <ion-input type="number"></ion-input>
+</ion-item>
+<ion-button expand="full">Add Meal</ion-button>
+
+  </ion-card-content>
+</ion-card>
+</ion-content>

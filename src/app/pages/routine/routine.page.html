@@ -1,0 +1,56 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+<ion-button (click)="navigatePrev()" color="light" slot="end" style="margin-right: 10px;">
+<ion-icon  color="dark" slot="icon-only" name="arrow-undo"></ion-icon>     
+
+</ion-button>
+<ion-button (click)="editRoutine()" color="light" slot="end" style="margin-right: 10px;">
+<ion-icon name="create"></ion-icon>
+</ion-button>
+    <ion-title> Routine</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+    <ion-list>
+
+            <ion-reorder-group (ionItemReorder)="reorderRoutine($event)" disabled="false">
+
+      <div *ngFor="let routine of routines">
+
+        <div *ngIf="routine.header">
+        <ion-item color="light" id="header">
+        <ion-label id="header">
+          {{routine.time}}
+        </ion-label>
+
+        <div style="float: right;" *ngIf="edit">
+            <ion-reorder slot="end"></ion-reorder>
+            </div>
+        </ion-item>
+        </div>
+        <div *ngIf="!routine.header">
+        
+          <ion-item>
+                      <ion-avatar slot="start">
+                <img src="{{routine.image}}">
+            </ion-avatar>
+            <ion-label>
+              <b ><span id="name-color">{{routine.item}}</span></b> X <b id="quatity-color">{{routine.quantity}}</b>
+            </ion-label>
+            <div *ngIf="edit">
+            <ion-reorder slot="end"></ion-reorder>
+            </div>
+          </ion-item>
+        </div>
+
+      </div>
+      </ion-reorder-group>
+  </ion-list>
+</ion-content>
+<ion-button id="bottom-sticky-button" color="light" (click)="addOrUpdateRoutine()"  expand="full">{{buttonName}}</ion-button>

@@ -1,0 +1,67 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Meals</ion-title>
+        <!--  <ion-button (click)="presentFilter()" color="light" slot="end" style="margin-right: 10px;">
+          <ion-icon slot="icon-only" name="options" color="dark" slot="icon-only"></ion-icon>
+      </ion-button> -->
+<ion-button (click)="navigate()" color="light" slot="end" style="margin-right: 10px;">
+  <ion-icon color="dark" name="basket"></ion-icon>
+<ion-badge color="light">{{selectMeals.length}}</ion-badge>
+</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<ion-searchbar (ionChange)="searchMeals()" [(ngModel)]="searchValue" type="text" spellcheck="true" mode="ios" inputmode="text" autocomplete="on" animated></ion-searchbar>
+    
+    <div *ngIf="meals.length === 0">
+    <ion-button (click)="navigateToAddMeal()" class="button" mode="ios" shape="round" size="large" expand="block">Add Item</ion-button>
+  </div>
+    
+    <ion-card class="card" mode="ios" *ngFor="let meal of meals"  >
+        <ion-item>
+            <ion-avatar slot="start">
+                <img (click)="presentModal(meal)" src="{{meal.image}}">
+            </ion-avatar>
+            
+<ion-label (click)="presentModal(meal)"> <span id="name-color"> {{meal.item}}</span> <span  id="quatity-color" *ngIf="meal.quantity>0"><b> X {{meal.quantity}}</b> </span></ion-label>
+            <ion-button color="light" class="button-medium"  (click)="addMeal(meal)" slot="end" >
+            <ion-icon class="icon-size" color="success" name="add-circle"></ion-icon>
+            </ion-button>
+        </ion-item>
+        <ion-card-content>
+        <ion-chip  color="secondary" item-content>
+  <ion-label class="chip"  color="primary"><b>Protein:</b> {{meal.protein}}</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="primary"><b>Carbs:</b> {{meal.carbohydrates}}</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="primary"><b>Cals:</b> {{meal.calories}}</ion-label>
+</ion-chip>
+</ion-card-content> 
+    </ion-card>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+<div class="footer">
+<ion-footer mode="ios">
+  <ion-toolbar id="container">
+    <ion-label id="left">Proteins: <span class="indicator">{{totalProteins | number : '1.2-2'}} </span> </ion-label>
+    <ion-label id="right">Carbs: <span class="indicator"> {{totalCarbs | number : '1.2-2'}} </span></ion-label>
+    <ion-label id="center">Cals: <span class="indicator"> {{totalCals | number : '1.2-2'}} </span></ion-label>
+
+  </ion-toolbar>
+</ion-footer>
+</div>

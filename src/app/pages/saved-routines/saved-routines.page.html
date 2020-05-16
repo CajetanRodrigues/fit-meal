@@ -1,0 +1,32 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Routine Yard</ion-title>
+<ion-button (click)="navigate()" color="light" slot="end" style="margin-right: 10px;">
+  <ion-icon color="dark" slot="icon-only" name="basket"></ion-icon>
+
+</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+<ion-searchbar (ionChange)="searchMeals()" [(ngModel)]="searchValue" type="text" spellcheck="true" mode="ios" inputmode="text" autocomplete="on" animated></ion-searchbar>
+  
+    <ion-card class="card" mode="ios" *ngFor="let routine of routineList">
+        <ion-item>
+            <ion-icon src="../assets/icon/arrow-redo-sharp.svg" color="primary"></ion-icon>
+
+            <ion-label><b>{{routine.routineName}}</b></ion-label>
+            <ion-button color="light" class="button-medium"  (click)="showRoutine(routine)" slot="end" >
+            <ion-icon class="icon-size" color="success" name="caret-forward-circle"></ion-icon>
+            </ion-button>
+        </ion-item>
+    </ion-card>
+</ion-content>

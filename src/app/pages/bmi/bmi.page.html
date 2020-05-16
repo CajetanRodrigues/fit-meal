@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>BMI Calculator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="login-logo">
+    <img src="assets/img/bmi/bmi.png" alt="BMI PNG">
+  </div>
+
+  <form #loginForm="ngForm" novalidate>
+    <ion-list>
+ <ion-item>
+    <ion-label color="primary">Gender</ion-label>
+    <ion-select required [(ngModel)]="bmi.gender" name="gender" type="text" #gender="ngModel" spellcheck="false" autocapitalize="off" value="brown" okText="Okay" cancelText="Dismiss" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+      <ion-select-option value="other">Other</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+<ion-text color="danger">
+        <p [hidden]="gender.valid || submitted == false" class="ion-padding-start">
+          Gender is required
+        </p>
+      </ion-text>
+
+
+
+   <ion-item>
+    <ion-label color="primary">Age</ion-label>
+    <ion-select required [(ngModel)]="bmi.age" name="age" type="text" #age="ngModel" spellcheck="false" autocapitalize="off" value="brown" okText="Okay" cancelText="Dismiss" value="brown" okText="Okay" cancelText="Dismiss" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+      <ion-select-option value="18">18</ion-select-option>
+      <ion-select-option value="19">19</ion-select-option>
+      <ion-select-option value="20">20</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+<ion-text color="danger">
+        <p [hidden]="age.valid || submitted == false" class="ion-padding-start">
+          Age is required
+        </p>
+      </ion-text>
+
+  <ion-item>
+  <ion-label position="floating" color="primary">Height (cm)</ion-label>
+  <ion-input required [(ngModel)]="bmi.height" name="height" type="text" #height="ngModel" spellcheck="false" autocapitalize="off" value="brown" okText="Okay" cancelText="Dismiss" type="number"></ion-input>
+</ion-item>
+
+<ion-text color="danger">
+        <p [hidden]="height.valid || submitted == false" class="ion-padding-start">
+          Height is required
+        </p>
+      </ion-text>
+
+ <ion-item>
+  <ion-label position="floating" color="primary">Weight (kg)</ion-label>
+  <ion-input required [(ngModel)]="bmi.weight" name="weight" type="text" #weight="ngModel" spellcheck="false" autocapitalize="off" value="brown" okText="Okay" cancelText="Dismiss" type="number"></ion-input>
+</ion-item>
+
+
+<ion-text color="danger">
+        <p [hidden]="weight.valid || submitted == false" class="ion-padding-start">
+          Weight is required
+        </p>
+      </ion-text>
+    </ion-list>
+
+    
+  </form>
+</ion-content>
+<ion-button class="bottom-sticky-button" color="light" (click)="onLogin(loginForm)" expand="full">Proceed</ion-button>

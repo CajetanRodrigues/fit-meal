@@ -1,0 +1,68 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+<ion-button (click)="navigatePrev()" color="light" slot="end" style="margin-right: 10px;">
+<ion-icon  color="dark" slot="icon-only" name="arrow-undo"></ion-icon>     
+
+</ion-button>
+    <ion-title>Your Basket</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+
+<ion-card *ngIf="tipShow">
+  <ion-card-header>
+
+    <ion-card-title class="message">Your Cart is Empty</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+      <img src="assets/gif/cart-empty.gif" alt="cart-empty PNG">
+  </ion-card-content>
+</ion-card>
+</div>
+    <ion-card class="card" mode="ios" *ngFor="let meal of meals"  >
+        <ion-item>
+            <ion-avatar slot="start">
+                <img (click)="presentModal(meal)" src="{{meal.image}}">
+            </ion-avatar>
+            <ion-icon src="../assets/icon/arrow-redo-sharp.svg" color="primary"></ion-icon>
+
+            <ion-label (click)="presentModal(meal)"><b> {{meal.name}} X {{meal.quantity}}</b></ion-label> 
+
+            <ion-button class="button-medium" color="light" (click)="minusQuantity(meal)" slot="end" fill="outline" >
+            <ion-icon class="icon-size" color="danger" name="remove-circle"></ion-icon>
+            </ion-button>
+
+        </ion-item>
+        <ion-card-content>
+        <ion-chip  color="secondary" item-content>
+  <ion-label class="chip"  color="primary"><b>Protein:</b> {{meal.protein}}</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="primary"><b>Carbs:</b> {{meal.carbs}}</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="primary"><b>Cals:</b> {{meal.calories}}</ion-label>
+</ion-chip>
+</ion-card-content> 
+    </ion-card>
+
+
+</ion-content>
+<div class="footer">
+<ion-footer mode="ios">
+  <ion-toolbar id="container">
+    <ion-label id="left">Proteins: <span class="indicator">{{totalProteins | number : '1.2-2'}} </span> </ion-label>
+    <ion-label id="right">Carbs: <span class="indicator"> {{totalCarbs | number : '1.2-2'}} </span></ion-label>
+    <ion-label id="center">Cals: <span class="indicator"> {{totalCals | number : '1.2-2'}} </span></ion-label>
+
+  </ion-toolbar>
+</ion-footer>
+</div>
+<ion-button id="bottom-sticky-button" color="light" (click)="navigateToRoutine()"  expand="full">Frame Routine</ion-button>

@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Activity & Body Type</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #loginForm="ngForm" novalidate>
+    <ion-list>
+
+<ion-item>
+    <ion-label color="primary">What's your goal ?</ion-label>
+    <ion-select required [(ngModel)]="data.goal" name="goal" type="text" #goal="ngModel" spellcheck="false" autocapitalize="off" value="brown" okText="Okay" cancelText="Dismiss" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+      <ion-select-option value="gain">Gain Muscle</ion-select-option>
+      <ion-select-option value="lose">Lose Weight</ion-select-option>
+      <ion-select-option value="maintain">Maintain Muscle</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-text color="danger">
+        <p [hidden]="goal.valid || submitted == false" class="ion-padding-start">
+          Goal is required
+        </p>
+      </ion-text>
+
+
+<ion-item>
+    <ion-label color="primary">Your Activity Level ?</ion-label>
+    <ion-select required [(ngModel)]="data.activityLevel" name="activityLevel" type="text" #activityLevel="ngModel" spellcheck="false" autocapitalize="off" value="brown" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+      <ion-select-option value="none">None</ion-select-option>
+      <ion-select-option value="light">Light</ion-select-option>
+      <ion-select-option value="moderate">Moderate</ion-select-option>
+      <ion-select-option value="heavy">Heavy</ion-select-option>
+      <ion-select-option value="extreme">Extreme</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-text color="danger">
+        <p [hidden]="activityLevel.valid || submitted == false" class="ion-padding-start">
+          Activity Level is required
+        </p>
+      </ion-text>
+
+<div class="body-logo">
+<img src="../../assets/img/body_types.jpg">
+</div>
+  <ion-item>
+    <ion-label color="primary">What's your body type ?</ion-label>
+    <ion-select required [(ngModel)]="data.bodyType" name="bodyType" type="text" #bodyType="ngModel" spellcheck="false" autocapitalize="off" value="brown" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+      <ion-select-option value="ectomorph">Ectomorph</ion-select-option>
+      <ion-select-option value="mesomorph">Mesomorph</ion-select-option>
+      <ion-select-option value="ectomorph">EctoMorph</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-text color="danger">
+        <p [hidden]="bodyType.valid || submitted == false" class="ion-padding-start">
+          Body Type is required
+        </p>
+      </ion-text>
+
+    <ion-item>
+    <ion-label color="primary">Number of Meals per day ?</ion-label>
+    <ion-select  required [(ngModel)]="data.mealsNumber" name="mealsNumber" type="text" #mealsNumber="ngModel" spellcheck="false" autocapitalize="off" value="brown" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+      <ion-select-option value="3">3</ion-select-option>
+      <ion-select-option value="4">4</ion-select-option>
+      <ion-select-option value="5">5 (Recommended)</ion-select-option>
+      <ion-select-option value="6">6 (Recommended)</ion-select-option>
+      <ion-select-option value="7">7 (Recommended)</ion-select-option>
+      <ion-select-option value="8">8</ion-select-option>
+
+
+
+    </ion-select>
+  </ion-item>
+  <ion-text color="danger">
+        <p [hidden]="mealsNumber.valid || submitted == false" class="ion-padding-start">
+          Meals Per Day is required
+        </p>
+      </ion-text>
+    </ion-list>
+  </form>
+</ion-content>
+<ion-button id="proceed-button" color="light" (click)="onLogin(loginForm)" expand="full">Proceed</ion-button>

@@ -1,0 +1,77 @@
+.badge {
+    padding: 5px;
+    float:right;
+}
+.chip {
+    font-size: 13px;
+}
+.footer{
+    position: sticky;
+    bottom: 0px;
+  }
+  #container {
+    width:100%;
+    text-align:center;
+}
+
+#left {
+    float:left;
+    // width:100px;
+    margin-left: 5px;
+}
+
+#center {
+    display: inline-block;
+    margin:0 auto;
+    // width:100px;
+}
+
+#right {
+    float:right;
+    // width:100px;
+    margin-right: 5px;
+}
+.indicator {
+    color: green
+}
+.indicator {
+    font-weight: bold;
+}
+.card {
+    top: -20px;
+}
+.button {
+    margin: 15px;
+
+}
+ion-card {
+    border-radius: 0px;
+    margin: 0px;
+}
+ion-searchbar {
+    margin-bottom: 20px;
+}
+.icon-large {
+    font-size: 50px;
+}
+.ripple-parent {
+    position: relative;
+    overflow: hidden;
+  }
+.button-medium {
+    width: 55px;
+    height: 45px;
+}
+.icon-size {
+    width: 50px;
+    height: 50px;
+}
+#quatity-color {
+    color: green;
+    font-weight: bolder;
+}
+#name-color {
+    color: whitesmoke;  
+    font-size: 18px;
+    font-weight: bold;
+}

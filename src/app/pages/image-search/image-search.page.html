@@ -1,0 +1,24 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+
+    <div class="image-searchbar">
+<ion-searchbar    [(ngModel)]="searchValue" type="text" spellcheck="true" mode="ios" inputmode="text" autocomplete="on" animated></ion-searchbar>
+    </div>
+    <ion-button class="image-searchbar" (click)="fetchImages()" color="light" slot="end" style="margin-right: 10px;">
+<ion-icon name="search-outline"></ion-icon>   
+
+</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <div *ngIf="searchValue.length===0">
+        <img src="assets/gif/image-search-waiting.gif" alt="cart-empty PNG">
+
+  </div>
+  <div *ngFor="let image of imageList">
+    <ion-img (click)="transferUrl(image)" [src]="image"></ion-img>
+  </div>
+</ion-list>
+</ion-content>
