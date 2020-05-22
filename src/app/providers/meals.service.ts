@@ -13,8 +13,12 @@ const httpOptions = {
 export class MealsService {
 
   constructor(private http: HttpClient) { }
-  readMeals(skipCount: number, pageNumber: number): Observable<any> {
+  readMeals(obj: any): Observable<any> {
     return this.http.post<any>
-      ('http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/read-meals', {skipCount: skipCount, pageNumber: pageNumber},  httpOptions);
+      ('http://13.127.91.5:8081/read-meals', obj, httpOptions);
+  }
+  searchMeal(term): Observable<any> {
+    return this.http.get<any>
+      ('http://13.127.91.5:8083/search/' + term , httpOptions);
   }
 }

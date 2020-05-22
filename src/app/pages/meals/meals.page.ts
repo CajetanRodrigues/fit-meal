@@ -1,12 +1,13 @@
 import { MealsService } from './../../providers/meals.service';
 import { MealsFilterPage } from './meals-filter/meals-filter.page';
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { ModalController, IonRouterOutlet } from '@ionic/angular';
+import { ModalController, IonRouterOutlet, MenuController } from '@ionic/angular';
 import { AboutPage } from '../about/about';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { BasketService } from '../../providers/basket.service';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { Storage } from '@ionic/storage';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -24,8 +25,8 @@ export class MealsPage implements OnInit {
   buttonFlag = false;
   meals: any[] = [];
   excludeTracks: any = [];
-  skipCount = 0;
-  pageNumber = 0;
+  pageSize = 6;
+  pageNumber = 1;
   constructor(public modalController: ModalController,
               private router: Router,
               private basketService: BasketService,
@@ -33,39 +34,33 @@ export class MealsPage implements OnInit {
               private modalCtrl: ModalController,
               private mealsService: MealsService,
               private route: ActivatedRoute,
-              private storage: Storage) {
-                this.apiCall(0,4); 
-
+              private storage: Storage,
+              public menu: MenuController) {
+                this.menu.enable(true);
+                this.apiCall(this.pageSize, this.pageNumber);
    }
-  apiCall(skipCount: number, pageNumber: number) {
-    if(skipCount === 0) {
-      this.mealsService.readMeals(skipCount, pageNumber)
+  apiCall(pageSize: number, pageNumber: number) {
+    console.log('PageSize: ' + this.pageSize);
+    console.log('PageNumber:' + this.pageNumber);
+    let obj = {
+      'pageSize' : this.pageSize,
+      'pageNumber': this.pageNumber
+    };
+    this.mealsService.readMeals(obj)
       .subscribe((data) => {
-        console.log('fetched items')
+        console.log('fetched items');
         console.log(data);
-        this.meals = data;
+        this.meals = [...this.meals, ...data];
         this.backupMealArray = this.meals;
+        this.pageNumber += 1;
+        // this.pageSize += 4;
       });
-    }
-    else {
-      this.mealsService.readMeals(skipCount,pageNumber)
-      .subscribe((data) => {
-        console.log(data);
-        Array.prototype.push.apply(this.meals, data); 
-        console.log(this.meals)
-        this.backupMealArray = this.meals;
-        if(data.status === 'over') {
-          return false;
-        }
-      });
-    }
-    
   }
   ngOnInit() {
   }
-  navigateToAddMeal() {
-    this.router.navigateByUrl('add-meal');
-  }
+  // navigateToAddMeal() {
+  //   this.router.navigateByUrl('add-meal');
+  // }
   addMeal(meal: any) {
     this.totalProteins = 0;
     this.totalCarbs = 0;
@@ -80,13 +75,13 @@ export class MealsPage implements OnInit {
     this.selectMeals.push(meal);
     setTimeout(() => {
         this.selectMeals.forEach( (meal: any) => {
-          this.totalProteins += meal.protein;
+          this.totalProteins += meal.proteins.value;
       });
         this.selectMeals.forEach( (meal: any) => {
-        this.totalCarbs += meal.carbohydrates;
+        this.totalCarbs += meal.carbohydrates.value;
     });
         this.selectMeals.forEach( (meal: any) => {
-      this.totalCals += meal.calories;
+      this.totalCals += meal.calories.value;
     });
       }, 2);
     }, 2);
@@ -94,16 +89,20 @@ export class MealsPage implements OnInit {
 
   }
   searchMeals() {
+    this.mealsService.searchMeal(this.searchValue)
+    .subscribe((mealArray) => {
+      this.meals = mealArray;
+    });
     if (this.searchValue === '') {
       this.meals = this.backupMealArray;
     }
-    this.meals = this.backupMealArray;
-    console.log(this.searchValue);
-    setTimeout(() => {
-      this.meals = this.meals.filter((meal) => {
-        return meal.item.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1;
-      });
-    },500);
+    // this.meals = this.backupMealArray;
+    // console.log(this.searchValue);
+    // setTimeout(() => {
+    //   this.meals = this.meals.filter((meal) => {
+    //     return meal.item.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1;
+    //   });
+    // }, 500);
 
   }
   async presentModal(meal: any) {
@@ -119,7 +118,7 @@ export class MealsPage implements OnInit {
     setTimeout(
       () => {
         this.router.navigateByUrl('basket');
-        let navigationExtras: NavigationExtras = {
+        const navigationExtras: NavigationExtras = {
           state: {
             totalProteins: this.totalProteins,
             totalCarbs: this.totalCarbs,
@@ -139,15 +138,14 @@ export class MealsPage implements OnInit {
     return await modal.present();
   }
   loadData(event) {
-    this.skipCount+=4;
-    this.pageNumber+=1;
+    this.apiCall(this.pageSize, this.pageNumber);
     setTimeout(() => {
-      console.log('Done');
       event.target.complete();
-      this.apiCall(this.skipCount, this.pageNumber);
-      if (this.meals.length === 8) {
-        event.target.disabled = true;
-      }
-    }, 500);
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      // if (data.length == 1000) {
+      //   event.target.disabled = true;
+      // }
+    }, 4500);
   }
 }

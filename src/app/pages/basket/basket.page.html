@@ -33,7 +33,7 @@
             </ion-avatar>
             <ion-icon src="../assets/icon/arrow-redo-sharp.svg" color="primary"></ion-icon>
 
-            <ion-label (click)="presentModal(meal)"><b> {{meal.name}} X {{meal.quantity}}</b></ion-label> 
+            <ion-label text-wrap (click)="presentModal(meal)"><b> {{meal.name}} X {{meal.quantity}}</b></ion-label> 
 
             <ion-button class="button-medium" color="light" (click)="minusQuantity(meal)" slot="end" fill="outline" >
             <ion-icon class="icon-size" color="danger" name="remove-circle"></ion-icon>
@@ -42,13 +42,13 @@
         </ion-item>
         <ion-card-content>
         <ion-chip  color="secondary" item-content>
-  <ion-label class="chip"  color="primary"><b>Protein:</b> {{meal.protein}}</ion-label>
+  <ion-label class="chip"  color="primary"><b>Protein:</b> {{meal.proteins.value}}</ion-label>
 </ion-chip>
    <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="primary"><b>Carbs:</b> {{meal.carbs}}</ion-label>
+  <ion-label class="chip" color="primary"><b>Carbs:</b> {{meal.carbohydrates}}</ion-label>
 </ion-chip>
    <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="primary"><b>Cals:</b> {{meal.calories}}</ion-label>
+  <ion-label class="chip" color="primary"><b>Cals:</b> {{meal.calories.value}}</ion-label>
 </ion-chip>
 </ion-card-content> 
     </ion-card>

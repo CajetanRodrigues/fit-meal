@@ -2,7 +2,7 @@ import { ProfileService } from './../../providers/profile.service';
 import { RoutineService } from './../../providers/routine.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, MenuController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -62,10 +62,13 @@ export class RoutinePage implements OnInit {
               private routineService: RoutineService,
               private storageService: Storage,
               private toastController: ToastController,
-              private profileService: ProfileService) {
+              private profileService: ProfileService,
+              private menu: MenuController) {
+                this.menu.enable(true);
                 this.route.queryParams.subscribe(params => {
                   if (this.router.getCurrentNavigation().extras.state) {
                     this.routines = this.router.getCurrentNavigation().extras.state.framedRoutine;
+                    console.log(this.routines)
                     this.routineId = this.router.getCurrentNavigation().extras.state.routineId;
                     console.log(this.router.getCurrentNavigation().extras.state.routineId);
                     if(this.router.getCurrentNavigation().extras.state.from === 'saved-routines') {

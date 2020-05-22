@@ -40,8 +40,8 @@
                       <ion-avatar slot="start">
                 <img src="{{routine.image}}">
             </ion-avatar>
-            <ion-label>
-              <b ><span id="name-color">{{routine.item}}</span></b> X <b id="quatity-color">{{routine.quantity}}</b>
+            <ion-label text-wrap>
+              <b ><span id="name-color">{{routine.name}}</span></b> X <b id="quatity-color">{{routine.quantity}}</b>
             </ion-label>
             <div *ngIf="edit">
             <ion-reorder slot="end"></ion-reorder>

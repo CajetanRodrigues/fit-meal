@@ -78,9 +78,9 @@ export class BasketPage implements OnInit, DoCheck {
 
     this.meals.forEach( (meal: any) => {
         if (meal.item === Meal.item) {
-          this.totalProteins -= meal.protein;
-          this.totalCarbs -= meal.carbohydrates;
-          this.totalCals -= meal.calories;
+          this.totalProteins -= meal.proteins.value;
+          this.totalCarbs -= meal.carbohydrates.value;
+          this.totalCals -= meal.calories.value;
         }
     });
 

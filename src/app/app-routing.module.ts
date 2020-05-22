@@ -5,7 +5,7 @@ import { CheckTutorial } from './providers/check-tutorial.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/add-meal', // Change it to /tutorial later 
+    redirectTo: 'login', // Change it to /tutorial later 
     pathMatch: 'full'
   },
   {

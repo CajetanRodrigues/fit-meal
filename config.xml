@@ -3,7 +3,7 @@
     <name>Fit Meal</name>
     <description>Plan smart meal routines</description>
     <author email="cajetanrodrigues88@gmail.com" href="https://github.com/CajetanRodrigues">Cajetan Rodrigues</author>
-    <content src="index.html"/>
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
@@ -24,7 +24,16 @@
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <platform name="android">
-        <allow-intent href="market:*" />
+        <access origin="*" />
+        <allow-intent href="http://*/*" />
+        <allow-intent href="https://*/*" />
+        <allow-intent href="tel:*" />
+        <allow-intent href="sms:*" />
+        <allow-intent href="mailto:*" />
+        <allow-intent href="geo:*" />
+        <allow-navigation href="http://*/*" />
+        <allow-navigation href="https://*/*" />
+        <allow-navigation href="data:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />

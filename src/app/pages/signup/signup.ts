@@ -1,4 +1,4 @@
-import { ToastController } from '@ionic/angular';
+import { ToastController, MenuController } from '@ionic/angular';
 import { AuthenticationService } from './../../providers/authentication.service';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -23,8 +23,11 @@ export class SignupPage {
     public router: Router,
     public userData: UserData,
     private authentication: AuthenticationService,
-    private toastController: ToastController
-  ) {}
+    private toastController: ToastController,
+    public menu: MenuController
+  ) {
+    this.menu.enable(false);
+  }
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,

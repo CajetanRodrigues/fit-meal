@@ -1,4 +1,4 @@
-import { ToastController } from '@ionic/angular';
+import { ToastController, MenuController } from '@ionic/angular';
 import { ProfileService } from './../../providers/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -21,8 +21,11 @@ export class BmiPage {
     public userData: UserData,
     public router: Router,
     private profileService: ProfileService,
-    private storageService: Storage
-  ) { }
+    private storageService: Storage,
+    private menu: MenuController
+  ) {
+    this.menu.enable(true)
+   }
   onLogin(form: NgForm) {
     this.submitted = true;
     this.storageService.get('userId')

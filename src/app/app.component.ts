@@ -10,6 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
+import * as firebase from 'firebase';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
 
 @Component({
   selector: 'app-root',
@@ -52,6 +55,7 @@ export class AppComponent implements OnInit {
   ];
   loggedIn = false;
   dark = true;
+  userProfile: firebase.User;
 
   constructor(
     private menu: MenuController,
@@ -63,8 +67,26 @@ export class AppComponent implements OnInit {
     private userData: UserData,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
+    private nativeStorage: NativeStorage,
   ) {
     this.initializeApp();
+    // this.platform.ready().then(() => {
+    //   // Here we will check if the user is already logged in
+    //   // because we don't want to ask users to log in each time they open the app
+  	// 	this.nativeStorage.getItem('facebook_user')
+    //   .then( data => {
+    //     // user is previously logged and we have his data
+    //     // we will let him access the app
+    //     this.router.navigate(['/meals']);
+    //     this.splashScreen.hide();
+    //   }, err => {
+    //     // we don't have the user data so we will ask him to log in
+    //   	this.router.navigate(['/login']);
+    //    this.splashScreen.hide();
+    //   });
+
+    // this.statusBar.styleDefault();
+    // });
   }
 
   async ngOnInit() {

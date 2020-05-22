@@ -9,10 +9,10 @@
 </ion-header>
 
 <ion-content>
-  <div class="login-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic logo">
-  </div>
 
+    <img src="assets/img/icon.png" alt="Ionic Logo">
+
+{{googleData}}
   <form #loginForm="ngForm" novalidate>
     <ion-list>
       <ion-item>
@@ -48,6 +48,21 @@
       <ion-col>
         <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
       </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col>
+    <ion-button (click)="googleLogin()" expand="block" color="danger"><ion-icon name="logo-google"></ion-icon>&nbsp; &nbsp; <b>Google Login</b> </ion-button>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col>
+    <ion-button (click)="doFbLogin()" expand="block" color="primary"><ion-icon name="logo-facebook"></ion-icon>&nbsp; &nbsp; <b>Facebook Login</b> </ion-button>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col>
+    <ion-button (click)="twitterLogin()" expand="block" color="secondary">&nbsp; &nbsp; <b>Twitter Login</b> </ion-button>
+    </ion-col>
     </ion-row>
   </form>
 

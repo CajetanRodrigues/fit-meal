@@ -3,6 +3,7 @@ import { RoutineService } from './../../providers/routine.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-saved-routines',
@@ -16,7 +17,9 @@ export class SavedRoutinesPage implements OnInit {
   constructor(private router: Router,
               private routineService: RoutineService,
               private storageService: Storage,
-              private profileService: ProfileService) {
+              private profileService: ProfileService,
+              private menu: MenuController) {
+                this.menu.enable(true);
                 this.apiCall();
     }
 

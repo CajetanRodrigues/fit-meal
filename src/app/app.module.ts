@@ -1,3 +1,5 @@
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Facebook } from '@ionic-native/facebook/ngx';
 import { MealsService } from './providers/meals.service';
 import { RoutineService } from './providers/routine.service';
 import { ProfileService } from './providers/profile.service';
@@ -24,6 +26,7 @@ import { File, FileEntry } from '@ionic-native/File/ngx';
 import { Camera,CameraOptions,PictureSourceType } from '@ionic-native/camera/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { MealsFilterPage } from './pages/meals/meals-filter/meals-filter.page';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @NgModule({
   imports: [
@@ -46,6 +49,9 @@ ImageSearchService,
 AuthenticationService,
 RoutineService,
 MealsService,
+GooglePlus,
+Facebook,
+NativeStorage
 ],
   bootstrap: [AppComponent],
   entryComponents: [AboutPage, MealsFilterPage]

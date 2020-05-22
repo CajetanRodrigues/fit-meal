@@ -16,7 +16,7 @@ export class ImageSearchService {
 
   fetchGoogleImages(searchValue: string): Observable<any> {
     return this.http.post<any>
-      ('http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/searchImages',
+      ('http://13.127.91.5:8081/searchImages',
       {
         searchQuery: searchValue
       } , httpOptions);
