@@ -29,33 +29,33 @@ _Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-st
 
 ## App Preview
 
-<img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/intro.PNG" width="250">
+<img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/intro.PNG" width="250">
 
 
 ### Authentication Screens
 
 | Login  | Sign Up |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/src/screenshots/login.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/src/screenshots/signup.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/login.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/signup.PNG" width="250"> 
 
 
 ### Personal Info Screens
 
 | BMI  | Activity & Body Type |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/bmi.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/activity.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/bmi.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/activity-body.PNG" width="250"> 
 
 ### Meals & Basket
 
 | Meals List  | Basket of selected meals |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/meals.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/basket.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/meals.png" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/basket.PNG" width="250"> 
 
 ### Framed Routine using Algorithm
 
 | Framed Routine  | Save Routine Modal |
 | -----------------| -----|
-| <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/routine.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/covid-tracker/blob/master/src/screenshots/countries.PNG" width="250"> 
+| <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/routine.PNG" width="250"> | <img src="https://github.com/CajetanRodrigues/fit-meal/blob/master/screenshots/routines.PNG" width="250"> 
 
 ## Deploying
 
