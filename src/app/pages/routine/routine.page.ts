@@ -54,7 +54,7 @@ export class RoutinePage implements OnInit {
   //     quantity: 5
   //   },
   // ];
-  buttonName = ''
+  buttonName = '';
   routineId: any;
   constructor(private router: Router,
               public alertController: AlertController,

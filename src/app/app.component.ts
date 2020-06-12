@@ -51,6 +51,11 @@ export class AppComponent implements OnInit {
       title: 'Routines',
       url: 'saved-routines',
       icon: 'aperture'
+    },
+    {
+      title: 'Profile',
+      url: 'profile',
+      icon: 'person-circle'
     }
   ];
   loggedIn = false;

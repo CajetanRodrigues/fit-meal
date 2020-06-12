@@ -1,52 +1,28 @@
-<ion-content>
-  <ion-header class="ion-no-border">
-    <ion-toolbar>
+<ion-header mode="ios">
+  <ion-toolbar>
 
-<ion-button (click)="dismiss()" color="light" slot="start" style="margin-right: 10px;">
-<ion-icon  color="dark" slot="icon-only" name="arrow-undo"></ion-icon>     
-
+    <ion-title>Meal Details</ion-title>
+        <!--  <ion-button (click)="presentFilter()" color="light" slot="end" style="margin-right: 10px;">
+          <ion-icon slot="icon-only" name="options" color="dark" slot="icon-only"></ion-icon>
+      </ion-button> -->
+<ion-button (click)="dismiss()" color="light" slot="end" style="margin-right: 10px;">
+<ion-icon color="dark" name="arrow-undo-sharp"></ion-icon>
 </ion-button>
-      <ion-buttons slot="end">
-        <ion-button (click)="presentPopover($event)">
-          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
 
-  <div class="about-header">
-    <!-- Instead of loading an image each time the select changes, use opacity to transition them -->
-                    <img src="{{Meal.image}}">
+  <ion-card>
+  <ion-card-header>
+  <img width="100%" src="{{Meal.img}}">
+    
+  </ion-card-header>
 
+  <ion-card-content>
+  <ion-card-subtitle>Meal</ion-card-subtitle>
+    <ion-card-title>{{Meal.description}}</ion-card-title>
+    Nutrients will be displayed over here
+  </ion-card-content>
+</ion-card>
 
-</div>
-
-  <div class="about-info">
-    <h3 class="ion-padding-top ion-padding-start"><b> {{Meal.name}} Benefits </b></h3>
-
-    <div class="ion-padding-start ion-padding-end">
-   <ion-chip  *ngFor="let benefit of Meal.benefits" item-content outline="true">
-  <ion-label class="chip"  color="success"><b>{{benefit}}</b> </ion-label>
-</ion-chip>
-</div>
-
-
-
-    <h3 class="ion-padding-top ion-padding-start"> <b>Nutrition Value </b></h3>
-    <div class="ion-padding-start ion-padding-end">
-<ion-chip  color="secondary"item-content>
-  <ion-label class="chip"  color="primary"><b>Protein:</b> {{Meal.proteins.value}}</ion-label>
-</ion-chip>
-   <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="primary"><b>Carbs:</b> {{Meal.carbohydrates.value}}</ion-label>
-</ion-chip>
-   <ion-chip color="secondary" item-content>
-  <ion-label class="chip" color="primary"><b>Cals:</b> {{Meal.calories.value}}</ion-label>
-</ion-chip>
-</div>
-
-
-
-
-  </div>
 </ion-content>

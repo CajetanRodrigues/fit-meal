@@ -21,6 +21,7 @@ export class BasketPage implements OnInit, DoCheck {
   framedRoutine: any = [];
   hide = false;
   idx = 0;
+  mealsCount = 0;
   constructor(private router: Router,
               private basketService: BasketService,
               private modalController: ModalController,
@@ -33,6 +34,7 @@ export class BasketPage implements OnInit, DoCheck {
                     this.totalCarbs = this.router.getCurrentNavigation().extras.state.totalCarbs;
                     this.totalCals = this.router.getCurrentNavigation().extras.state.totalCals;
                     this.meals = [...new Set(this.router.getCurrentNavigation().extras.state.selectMeals)];
+                    this.mealsCount = this.router.getCurrentNavigation().extras.state.mealsCount;
                   }
                 });
                }
@@ -50,7 +52,15 @@ export class BasketPage implements OnInit, DoCheck {
     },100);
   }
   navigatePrev() {
-    this.router.navigateByUrl('meals');
+    const navigationExtras: NavigationExtras = {
+      state: {
+        mealsCount: this.mealsCount,
+        totalProteins: this.totalProteins,
+        totalCarbs:  this.totalCarbs,
+        totalCals: this.totalCals
+      }
+    };
+    this.router.navigate(['meals'], navigationExtras);
   }
   async presentModal(meal: any) {
     const modal = await this.modalController.create({
@@ -62,28 +72,33 @@ export class BasketPage implements OnInit, DoCheck {
     return await modal.present();
   }
   minusQuantity(Meal: any) {
+    this.mealsCount = 0;
+    console.log(this.meals.length)
+
     console.log(this.meals);
-    setTimeout(() => {
-      let idx = -1;
-      this.meals.forEach((meal) => {
+    let idx = -1;
+    this.meals.forEach((meal) => {
         idx++;
-        if (meal.item === Meal.item ) {
+        if (meal.description === Meal.description ) {
           meal.quantity -= 1;
           if (meal.quantity === 0) {
             this.meals.splice(idx, 1);
           }
         }
       });
-    }, 20);
+
 
     this.meals.forEach( (meal: any) => {
-        if (meal.item === Meal.item) {
-          this.totalProteins -= meal.proteins.value;
-          this.totalCarbs -= meal.carbohydrates.value;
-          this.totalCals -= meal.calories.value;
+        if (meal.description === Meal.description) {
+          this.totalProteins -= 2;
+          this.totalCarbs -= 10;
+          this.totalCals -= 15;
         }
     });
-
+    this.meals.forEach( (meal: any) => {
+      this.mealsCount += meal.quantity;
+    });
+    console.log('Total Meal Quntity: ' + this.mealsCount);
 }
  ngDoCheck() {
     // let idx = -1;
@@ -110,6 +125,7 @@ navigateToRoutine() {
       }
     )
     .subscribe((data) => {
+      console.log(data);
       let navigationExtras: NavigationExtras = {
         state: {
           framedRoutine: data,

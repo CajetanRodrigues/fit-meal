@@ -16,9 +16,9 @@ export class ProfileService {
               private profileService: ProfileService) { }
   addBMI(bmi: any, id: string): Observable<any> {
     return this.http.post<any>
-      ('http://13.127.91.5:8081/add-bmi',
+      ('http://18.181.189.89:8081/add-bmi',
       {
-        userId: id,
+        userId: '5ed90fd57f053059fa1bee49',
         age: bmi.age,
         height: bmi.height,
         weight: bmi.weight,
@@ -27,9 +27,9 @@ export class ProfileService {
   }
   addInfo(data: any, id: string): Observable<any> {
     return this.http.post<any>
-      ('http://13.127.91.5:8081/add-info',
+      ('http://18.181.189.89:8081/add-info',
       {
-        userId: id,
+        userId: '5ed90fd57f053059fa1bee49',
         goal: data.goal,
         activityLevel: data.activityLevel,
         bodyType: data.bodyType,

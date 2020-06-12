@@ -15,7 +15,7 @@ export class RoutineService {
   constructor(private http: HttpClient) { }
   frameRoutine(data: any): Observable<any> {
     return this.http.post<any>
-      ('http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/frame-routine',
+      ('http://18.181.189.89:8081/frame-routine',
       {
         totalProteins: data.totalProteins,
         totalCarbs: data.totalCarbs,
@@ -26,9 +26,9 @@ export class RoutineService {
 
   addRoutine(data: any): Observable<any> {
     return this.http.post<any>
-      ('http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/add-routine',
+      ('http://18.181.189.89:8081/add-routine',
       {
-        userId: data.userId,
+        userId: '5ed90fd57f053059fa1bee49',
         routineName: data.routineName,
         routineFramed: data.routineFramed,
       } , httpOptions);
@@ -36,16 +36,16 @@ export class RoutineService {
 
   readRoutinesById(userId: any): Observable<any> {
     return this.http.post<any>
-      ('http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/read-routines',
+      ('http://18.181.189.89:8081/read-routines',
       {
-        'userId' : userId
+        'userId' : '5ed90fd57f053059fa1bee49'
       },
       httpOptions);
   }
 
   updateRoutineById(routineId: any, routineFramed: any): Observable<any> {
     return this.http.post<any>
-      ('http://ec2-13-127-91-5.ap-south-1.compute.amazonaws.com/update-routine',
+      ('http://18.181.189.89:8081/update-routine',
       {
         'routineId': routineId,
         'routineFramed': routineFramed

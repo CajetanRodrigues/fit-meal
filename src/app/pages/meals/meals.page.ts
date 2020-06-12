@@ -25,8 +25,9 @@ export class MealsPage implements OnInit {
   buttonFlag = false;
   meals: any[] = [];
   excludeTracks: any = [];
-  pageSize = 6;
-  pageNumber = 1;
+  pageSize = 15;
+  pageNumber = 0;
+  mealsCount = 0;
   constructor(public modalController: ModalController,
               private router: Router,
               private basketService: BasketService,
@@ -38,13 +39,22 @@ export class MealsPage implements OnInit {
               public menu: MenuController) {
                 this.menu.enable(true);
                 this.apiCall(this.pageSize, this.pageNumber);
+                this.route.queryParams.subscribe(params => {
+                  if (this.router.getCurrentNavigation().extras.state) {
+                    this.mealsCount = this.router.getCurrentNavigation().extras.state.mealsCount;
+                    this.totalProteins = this.router.getCurrentNavigation().extras.state.totalProteins;
+                    this.totalCarbs = this.router.getCurrentNavigation().extras.state.totalCarbs;
+                    this.totalCals = this.router.getCurrentNavigation().extras.state.totalCals;
+                    console.log('Meals Count: ' + this.mealsCount);
+                  }
+                });
    }
   apiCall(pageSize: number, pageNumber: number) {
     console.log('PageSize: ' + this.pageSize);
     console.log('PageNumber:' + this.pageNumber);
-    let obj = {
-      'pageSize' : this.pageSize,
-      'pageNumber': this.pageNumber
+    const obj = {
+      pageSize : this.pageSize,
+      pageNumber: this.pageNumber
     };
     this.mealsService.readMeals(obj)
       .subscribe((data) => {
@@ -62,30 +72,43 @@ export class MealsPage implements OnInit {
   //   this.router.navigateByUrl('add-meal');
   // }
   addMeal(meal: any) {
+
     this.totalProteins = 0;
     this.totalCarbs = 0;
     this.totalCals = 0;
-    setTimeout(() => {
-    //   this.selectMeals.forEach( (Meal: any) => {
-    //     if (Meal.name === meal.name) {
-    //       Meal.quantity = Meal.quantity + 1;
-    //     }
-    //     this.selectMeals.push(meal);
-    // });
-    this.selectMeals.push(meal);
-    setTimeout(() => {
-        this.selectMeals.forEach( (meal: any) => {
-          this.totalProteins += meal.proteins.value;
+    this.mealsCount = 0;
+    // First Check if the meal already exists in the selectedMeals Array
+    let flag = false;
+    this.selectMeals.forEach((data: any) => {
+      if (data.description === meal.description) {
+        meal.quantity = meal.quantity + 1;
+        flag = true;
+      }
+      console.log();
+    });
+    // Then, if still flag is false, then set quantity to 0 and push the meal for the first time in the array
+    if (flag === false) {
+      meal["quantity"] = 1;
+      this.selectMeals.push(meal);
+    }
+    
+    // After the meals quantity is properly synced, now sum up the total protein, carbs & cals
+
+    this.selectMeals.forEach( (meal: any) => {
+          this.totalProteins += 2*meal.quantity;
       });
-        this.selectMeals.forEach( (meal: any) => {
-        this.totalCarbs += meal.carbohydrates.value;
+    this.selectMeals.forEach( (meal: any) => {
+        this.totalCarbs += 10*meal.quantity;
     });
-        this.selectMeals.forEach( (meal: any) => {
-      this.totalCals += meal.calories.value;
+    this.selectMeals.forEach( (meal: any) => {
+      this.totalCals += 15*meal.quantity;
     });
-      }, 2);
-    }, 2);
-    meal.quantity++;
+    this.selectMeals.forEach( (meal: any) => {
+      this.mealsCount += meal.quantity;
+    });
+
+    console.log(this.selectMeals);
+
 
   }
   searchMeals() {
@@ -123,7 +146,8 @@ export class MealsPage implements OnInit {
             totalProteins: this.totalProteins,
             totalCarbs: this.totalCarbs,
             totalCals: this.totalCals,
-            selectMeals: this.selectMeals
+            selectMeals: this.selectMeals,
+            mealsCount: this.mealsCount
           }
         };
         this.router.navigate(['basket'], navigationExtras);

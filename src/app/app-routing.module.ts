@@ -64,6 +64,10 @@ const routes: Routes = [
   {
     path: 'saved-routines',
     loadChildren: () => import('./pages/saved-routines/saved-routines.module').then( m => m.SavedRoutinesPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 

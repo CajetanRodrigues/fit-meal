@@ -16,7 +16,7 @@ export class AuthenticationService {
 
   signup(name: string, email: string, password: string): Observable<any> {
     return this.http.post<any>
-      ('http://13.127.91.5:8081/signup',
+      ('http://18.181.189.89:8081/signup',
       {
         email: email,
         name: name,
@@ -26,7 +26,7 @@ export class AuthenticationService {
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>
-      ('http://13.127.91.5:8081/login',
+      ('http://18.181.189.89:8081/login',
       {
         email: email,
         password: password

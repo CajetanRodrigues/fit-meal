@@ -10,7 +10,7 @@
       </ion-button> -->
 <ion-button (click)="navigate()" color="light" slot="end" style="margin-right: 10px;">
   <ion-icon color="dark" name="basket"></ion-icon>
-<ion-badge color="light">{{selectMeals.length}}</ion-badge>
+<ion-badge color="light">{{mealsCount}}</ion-badge>
 </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +23,7 @@
     <ion-card class="card" mode="ios" *ngFor="let meal of meals"  >
         <ion-item class="item-text-wrap">
             <ion-avatar slot="start">
-                <img (click)="presentModal(meal)" src="{{meal.image.thumb}}">
+                <img (click)="presentModal(meal)" src="{{meal.img}}">
             </ion-avatar>
 <ion-label  text-wrap (click)="presentModal(meal)"> <span id="name-color"> {{meal.description}}</span> <span  id="quatity-color" *ngIf="meal.quantity>0"><b> X {{meal.quantity}}</b> </span></ion-label>
 
@@ -33,11 +33,15 @@
         </ion-item>
         <ion-card-content>
     <ion-label  text-wrap> 
-    Photo by 
-    <span id="photographer-name"><a href="{{meal.unsplash.profile}}"> {{meal.unsplash.name}} </a> </span>
-    on
-    <span id="unsplash"><a href="https://unsplash.com/">Unsplash</a></span>
-    
+  <ion-chip  color="secondary" item-content>
+  <ion-label class="chip"  color="primary"><b>Protein:</b> 2</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="primary"><b>Carbs:</b> 10</ion-label>
+</ion-chip>
+   <ion-chip color="secondary" item-content>
+  <ion-label class="chip" color="primary"><b>Cals:</b> 15</ion-label>
+</ion-chip>
     </ion-label>
 
         <!--
